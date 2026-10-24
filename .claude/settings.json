@@ -1,0 +1,18 @@
+{
+  "extraKnownMarketplaces": {
+    "claudemods": {
+      "source": { "source": "github", "repo": "andycqos74/claudemods" }
+    }
+  },
+  "enabledPlugins": {
+    "brain-dump@claudemods": true,
+    "helper-desk@claudemods": true,
+    "cache-clock@claudemods": true,
+    "handoff@claudemods": true,
+    "reflect@claudemods": true,
+    "chat-inventory@claudemods": true,
+    "screen-share@claudemods": true,
+    "replay-theater@claudemods": true,
+    "mods@claudemods": true
+  }
+}
