@@ -64,6 +64,18 @@ BookingRequestWorkflow(request)
 Signals: `pause`, `resume`, `cancel`, `updateRequest`, `cardholderApproved`.
 Queries: `status` (last poll, last seen slots, bookings made).
 
+As built in phase 1 (`packages/workflows/src/booking-request.ts`):
+- **Time** comes from a `now` local activity, recorded in history, so the
+  workflow never reads the clock itself.
+- **Notify-only:** each matching slot is announced once (tracked by
+  `date|court|start`); polling continues until the date range passes or the
+  request is cancelled. `mode` matters only once booking exists.
+- **Release time:** when the next release opens a wanted date, the workflow
+  polls `releaseDelaySeconds` (default 3) *after* it, since a poll before it
+  cannot see the new day. Phase 2 can add an earlier wake-up to log in first.
+- **No wanted date bookable yet:** no request is sent; it sleeps to the next release.
+- **Cloudflare block:** one notification, then a one-hour back-off.
+
 ## 5. Never double-book, never double-pay
 
 - `bookAndPay` has **no automatic retries** once checkout has started. It
@@ -89,9 +101,10 @@ The venue takes card payment at checkout, probably through Stripe.
 - A spend cap (`maxPricePence` per booking, plus a per-request total) is checked
   before payment.
 
-## 7. Notifications (open decision)
+## 7. Notifications
 
-Proposed: [ntfy](https://ntfy.sh) push to your phone. It is free, needs no
+Phase 1 uses [ntfy](https://ntfy.sh) push to your phone (`NTFY_TOPIC_URL`),
+and falls back to the worker log when it is unset. It is free, needs no
 account, and supports action buttons, so "Approve done" can send the
 `cardholderApproved` signal. Alternatives: email, Telegram.
 

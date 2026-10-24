@@ -1,0 +1,11 @@
+{
+  "name": "@whataracket/capture",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Phase 0 capture tool. Run at home: records the real ClubSpark flow, redacted.",
+  "type": "module",
+  "dependencies": {
+    "@whataracket/clubspark": "workspace:*",
+    "playwright": "^1.56.0"
+  }
+}

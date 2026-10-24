@@ -1,0 +1,57 @@
+# whataracket + its own Temporal, as one Portainer stack (docs/DEPLOY.md).
+#
+# Portainer: Stacks → Add stack → Repository
+#   Repository URL   https://github.com/andycqos74/whataracket
+#   Compose path     deploy/stack/docker-compose.yml
+# then set the environment variables below in the stack editor.
+#
+# Already running Temporal elsewhere? Use deploy/stack/worker-only.yml instead.
+
+name: whataracket
+
+services:
+  temporal:
+    # Single-process Temporal with SQLite persistence and the Web UI. Plenty
+    # for a home server running a handful of long-lived requests.
+    image: temporalio/temporal:1.8.3
+    command: ["server", "start-dev", "--ip", "0.0.0.0", "--db-filename", "/data/temporal.db", "--namespace", "default"]
+    # The image runs as a non-root user; the named volume must be writable by it.
+    user: "0:0"
+    ports:
+      - "${TEMPORAL_UI_PORT:-8233}:8233" # Web UI
+      - "${TEMPORAL_GRPC_PORT:-7233}:7233" # gRPC, for the CLI from other machines (optional)
+    volumes:
+      - temporal-data:/data
+    healthcheck:
+      test: ["CMD", "temporal", "operator", "cluster", "health", "--address", "127.0.0.1:7233"]
+      interval: 10s
+      timeout: 5s
+      retries: 12
+      start_period: 10s
+    restart: unless-stopped
+
+  worker:
+    build:
+      context: ../..
+      dockerfile: Dockerfile
+      args:
+        INSTALL_CHROMIUM: "${INSTALL_CHROMIUM:-false}"
+    image: whataracket-worker:local
+    depends_on:
+      temporal:
+        condition: service_healthy
+    environment:
+      TEMPORAL_ADDRESS: temporal:7233
+      TEMPORAL_NAMESPACE: default
+      TEMPORAL_TASK_QUEUE: "${TEMPORAL_TASK_QUEUE:-whataracket}"
+      CLUBSPARK_HOST: "${CLUBSPARK_HOST:-clubspark.lta.org.uk}"
+      CLUBSPARK_ROLE: "${CLUBSPARK_ROLE:-}"
+      NTFY_TOPIC_URL: "${NTFY_TOPIC_URL:-}"
+      NTFY_TOKEN: "${NTFY_TOKEN:-}"
+    volumes:
+      - requests:/requests
+    restart: unless-stopped
+
+volumes:
+  temporal-data:
+  requests:

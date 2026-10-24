@@ -1,0 +1,14 @@
+**/node_modules
+**/dist
+**/*.tsbuildinfo
+.git
+.github
+.claude
+captures
+.auth
+test-results
+playwright-report
+coverage
+.env
+.env.*
+*.env

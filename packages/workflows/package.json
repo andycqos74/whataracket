@@ -17,6 +17,9 @@
     "@whataracket/domain": "workspace:*"
   },
   "devDependencies": {
-    "@whataracket/activities": "workspace:*"
+    "@whataracket/activities": "workspace:*",
+    "@temporalio/testing": "^1.23.0",
+    "@temporalio/worker": "^1.23.0",
+    "@whataracket/clubspark": "workspace:*"
   }
 }

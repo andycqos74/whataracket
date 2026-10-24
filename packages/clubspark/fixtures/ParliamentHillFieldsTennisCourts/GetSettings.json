@@ -1,0 +1,279 @@
+{
+  "VenueID": "64c6acf4-0ecd-476b-b548-899d9963386c",
+  "ServerDateTime": "2026-10-24T23:16:18.4461344+00:00",
+  "IsAuthenticated": "[redacted]",
+  "IsAdministrator": false,
+  "IsCoachAdministrator": false,
+  "IsMember": false,
+  "MustAuthenticate": "[redacted]",
+  "AdminOnlyBookings": false,
+  "OnBehalfOfBooking": false,
+  "PaymentEnabled": true,
+  "GroupBookingEnabled": true,
+  "MembershipRequired": false,
+  "MembershipCost": 0,
+  "DefaultInterval": 60,
+  "NewDayBookingAvailabilityTime": 0,
+  "Roles": [
+    {
+      "Name": "Guest",
+      "AdvancedBookingPeriod": 2,
+      "MaximumBookingIntervals": 1,
+      "MinimumBookingIntervals": 1,
+      "CanBook": false
+    }
+  ],
+  "ResourceConfiguration": {
+    "Groups": {
+      "Category": {
+        "Default": 999,
+        "Label": "Activity",
+        "Items": {
+          "1": {
+            "Name": "Tennis"
+          },
+          "2": {
+            "Name": "Mini Tennis"
+          },
+          "3": {
+            "Name": "Touch Tennis"
+          },
+          "4": {
+            "Name": "Cardio Tennis"
+          },
+          "5": {
+            "Name": "Ball machine"
+          },
+          "6": {
+            "Name": "Practice wall"
+          },
+          "7": {
+            "Name": "Badminton"
+          },
+          "8": {
+            "Name": "Bowls"
+          },
+          "9": {
+            "Name": "Cricket"
+          },
+          "10": {
+            "Name": "Croquet"
+          },
+          "11": {
+            "Name": "Football"
+          },
+          "12": {
+            "Name": "Netball"
+          },
+          "13": {
+            "Name": "Padel"
+          },
+          "14": {
+            "Name": "Pickleball"
+          },
+          "15": {
+            "Name": "Pilates"
+          },
+          "16": {
+            "Name": "Platform Tennis"
+          },
+          "17": {
+            "Name": "Rowing"
+          },
+          "18": {
+            "Name": "Snooker"
+          },
+          "19": {
+            "Name": "Squash"
+          },
+          "20": {
+            "Name": "Table Tennis"
+          },
+          "21": {
+            "Name": "Yoga"
+          },
+          "22": {
+            "Name": "Basketball"
+          },
+          "23": {
+            "Name": "Hockey"
+          },
+          "24": {
+            "Name": "Futsal"
+          },
+          "25": {
+            "Name": "Walking Football"
+          },
+          "26": {
+            "Name": "Athletics"
+          },
+          "27": {
+            "Name": "Golf"
+          },
+          "28": {
+            "Name": "Group Exercise"
+          },
+          "29": {
+            "Name": "Gym Workout"
+          },
+          "30": {
+            "Name": "Multi-sport"
+          },
+          "31": {
+            "Name": "Real Tennis"
+          },
+          "32": {
+            "Name": "Running"
+          },
+          "33": {
+            "Name": "Walking Tennis"
+          },
+          "34": {
+            "Name": "Rugby Union"
+          },
+          "35": {
+            "Name": "Rugby League"
+          },
+          "36": {
+            "Name": "Lacrosse"
+          },
+          "37": {
+            "Name": "American Football (Flag)"
+          },
+          "38": {
+            "Name": "Studio"
+          },
+          "39": {
+            "Name": "Multi-use room"
+          },
+          "40": {
+            "Name": "Cycling"
+          },
+          "999": {
+            "Name": "Other"
+          }
+        }
+      },
+      "Location": {
+        "Default": 99,
+        "Label": "Type",
+        "Items": {
+          "0": {
+            "Name": "Outdoor"
+          },
+          "1": {
+            "Name": "Indoor"
+          },
+          "2": {
+            "Name": "Temporary Indoor"
+          },
+          "99": {
+            "Name": "Other"
+          }
+        }
+      },
+      "Size": {
+        "Default": 99,
+        "Label": "Size",
+        "Items": {
+          "0": {
+            "Name": "Full"
+          },
+          "1": {
+            "Name": "Mini Red"
+          },
+          "2": {
+            "Name": "Mini Orange"
+          },
+          "3": {
+            "Name": "Touch Tennis"
+          },
+          "4": {
+            "Name": "5-a-side"
+          },
+          "5": {
+            "Name": "1/2"
+          },
+          "6": {
+            "Name": "1/3"
+          },
+          "7": {
+            "Name": "1/4"
+          },
+          "99": {
+            "Name": "Other"
+          }
+        }
+      },
+      "Surface": {
+        "Default": 99,
+        "Label": "Surface",
+        "Items": {
+          "0": {
+            "Name": "Acrylic"
+          },
+          "1": {
+            "Name": "Artificial Grass"
+          },
+          "2": {
+            "Name": "Artificial Clay"
+          },
+          "3": {
+            "Name": "Carpet"
+          },
+          "4": {
+            "Name": "Clay"
+          },
+          "5": {
+            "Name": "Grass"
+          },
+          "6": {
+            "Name": "Hard"
+          },
+          "7": {
+            "Name": "Tarmac"
+          },
+          "8": {
+            "Name": "3G"
+          },
+          "9": {
+            "Name": "4G"
+          },
+          "99": {
+            "Name": "Other"
+          }
+        }
+      },
+      "Lighting": {
+        "Default": 0,
+        "Label": "Lighting",
+        "Items": {
+          "0": {
+            "Name": "No Floodlights"
+          },
+          "1": {
+            "Name": "Incandescent Lighting"
+          },
+          "2": {
+            "Name": "Halogen Lighting"
+          },
+          "3": {
+            "Name": "Fluorescent Lighting"
+          },
+          "4": {
+            "Name": "Sodium Vapour Lighting"
+          },
+          "5": {
+            "Name": "HID Lighting"
+          },
+          "6": {
+            "Name": "LED Lighting"
+          },
+          "7": {
+            "Name": "Floodlit"
+          }
+        }
+      }
+    }
+  }
+}

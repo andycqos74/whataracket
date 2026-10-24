@@ -32,6 +32,18 @@ Browsers are not downloaded on install. When the ClubSpark client is built:
 pnpm --filter @whataracket/clubspark exec playwright install chromium
 ```
 
+## Run it locally
+
+```bash
+pnpm build                  # compile and pre-bundle the workflow code
+pnpm temporal:dev
+pnpm worker                 # loads .env if present
+pnpm cli check deploy/requests/example.json
+pnpm cli start deploy/requests/example.json
+```
+
+For the home server, see [DEPLOY.md](DEPLOY.md).
+
 ## Secrets
 
 ```bash

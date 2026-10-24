@@ -1,0 +1,8 @@
+{
+  "TimeZone": "Europe/London",
+  "NewDayBookingAvailabilityTime": 1200,
+  "Roles": [
+    { "ID": "guest", "Name": "Guest", "AdvancedBookingPeriod": 7 },
+    { "ID": "member", "Name": "Member", "AdvancedBookingPeriod": 14 }
+  ]
+}

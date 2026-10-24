@@ -3,5 +3,10 @@
   "compilerOptions": { "rootDir": "src", "outDir": "dist" },
   "include": ["src"],
   "exclude": ["src/**/*.test.ts"],
-  "references": [{ "path": "../../packages/activities" }, { "path": "../../packages/workflows" }]
+  "references": [
+    { "path": "../../packages/domain" },
+    { "path": "../../packages/clubspark" },
+    { "path": "../../packages/activities" },
+    { "path": "../../packages/workflows" }
+  ]
 }

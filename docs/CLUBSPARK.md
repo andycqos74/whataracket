@@ -7,8 +7,26 @@ Venue segment: `ParliamentHillFieldsTennisCourts` · host `clubspark.lta.org.uk`
 Status key: ✅ confirmed by working third-party code checked against the live
 site (September 2026) · ❓ not yet seen · ⚠️ risk.
 
-None of this has been checked against Parliament Hill Fields itself. The
-build starts by capturing it (see [BUILD-PLAN.md](BUILD-PLAN.md), phase 0).
+## 0. Parliament Hill Fields, confirmed 2026-10-24 ✅
+
+From a home connection, logged out (`pnpm capture fixtures`; fixtures in
+`packages/clubspark/fixtures/ParliamentHillFieldsTennisCourts/`):
+- `node:https` requests got straight through. No Cloudflare challenge.
+- `GetSettings`: one role, `Guest`, `AdvancedBookingPeriod` **2**,
+  `MaximumBookingIntervals` **1**, `DefaultInterval` 60, so one hour per
+  booking. `NewDayBookingAvailabilityTime` **0**: the new day opens at midnight.
+- `GetVenueSessions`: Courts 1–10 (`Category` 1) plus two cricket nets
+  (`Category` 9). 60-minute cells, 07:00 to 21:00.
+- **Free cells (`Category` 0) carry no price** when logged out. Prices appear
+  only on taken cells (`1000`): £7.00 or £11.60 an hour, probably two rate
+  bands. The parser keeps unpriced free cells with an unknown price; the
+  price cap is only applied when a price is known. ❓ Confirm on the website
+  that those cells really are bookable.
+- In late October, 18:00–21:00 is `8000` (closed) on every court.
+- A free session can span several hours (e.g. 07:00–13:00, `Interval` 60).
+
+Everything below came from other venues; §2–3 now match what we see here,
+except the price rule above.
 
 ## 1. Network access ⚠️
 
@@ -77,6 +95,11 @@ Notes:
 - Prices are decimal pounds in JSON. Convert to integer pence at the boundary.
 - Adjacent free sessions on one court merge into longer blocks; a 60-minute
   booking may be two 30-minute cells.
+- ❓ A free session longer than its `Interval` is split into cells of that
+  interval, each priced at `CourtCost + LightingCost` (the parser assumes
+  per-cell prices). Confirm with a Parliament Hill Fields capture.
+- ❓ The tap-through link in notifications assumes the public grid is at
+  `/<venue>/Booking/BookByDate#?date=YYYY-MM-DD`.
 - The API returns priced cells **beyond** the bookable horizon. The booking page
   greys them out using `GetSettings` (below), and so must we.
 

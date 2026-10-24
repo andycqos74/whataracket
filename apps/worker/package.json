@@ -8,12 +8,19 @@
     "@temporalio/client": "^1.23.0",
     "@temporalio/worker": "^1.23.0",
     "@whataracket/activities": "workspace:*",
-    "@whataracket/workflows": "workspace:*"
+    "@whataracket/workflows": "workspace:*",
+    "@whataracket/clubspark": "workspace:*",
+    "@whataracket/domain": "workspace:*"
   },
   "scripts": {
-    "start": "node dist/main.js"
+    "build": "tsc -b && node dist/bundle.js",
+    "start": "node dist/main.js",
+    "cli": "node dist/cli.js"
   },
   "devDependencies": {
     "@temporalio/testing": "^1.23.0"
+  },
+  "bin": {
+    "whataracket": "dist/cli.js"
   }
 }

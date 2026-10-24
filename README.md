@@ -8,11 +8,14 @@ Built on Temporal: each booking request is a long-running workflow that polls,
 sleeps durably, books exactly once, and waits for you when your bank wants to
 approve a payment.
 
-**Status:** scaffolded, not built. See [docs/BUILD-PLAN.md](docs/BUILD-PLAN.md).
+**Status:** phase 1 (watch and notify) is built and tested against synthetic
+fixtures, but not yet run against the live site. Booking and payment are
+phase 2. See [docs/BUILD-PLAN.md](docs/BUILD-PLAN.md).
 
 - [docs/DESIGN.md](docs/DESIGN.md): architecture, workflow, payment, open decisions
 - [docs/CLUBSPARK.md](docs/CLUBSPARK.md): the ClubSpark API as far as it is known
 - [docs/SETUP.md](docs/SETUP.md): install, local Temporal, secrets
+- [docs/DEPLOY.md](docs/DEPLOY.md): Docker / Portainer stack on a home server
 
 Target venue: [Parliament Hill Fields Tennis Courts](https://clubspark.lta.org.uk/ParliamentHillFieldsTennisCourts).
 
@@ -23,7 +26,9 @@ packages/domain      pure booking rules (imported by workflows)
 packages/clubspark   ClubSpark client: HTTPS availability, Playwright checkout
 packages/activities  Temporal activities
 packages/workflows   Temporal workflows
-apps/worker          worker process; runs on a home connection
+apps/worker          worker process and `whataracket` CLI; runs on a home connection
+tools/capture        phase 0 capture tool (run at home)
+deploy/stack         Portainer / Compose stacks: worker, optionally Temporal
 deploy/compose       local Temporal dev server
 ```
 

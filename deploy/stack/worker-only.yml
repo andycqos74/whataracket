@@ -1,0 +1,34 @@
+# whataracket worker only, pointed at a Temporal you already run (docs/DEPLOY.md).
+#
+# Portainer: Stacks → Add stack → Repository
+#   Repository URL   https://github.com/andycqos74/whataracket
+#   Compose path     deploy/stack/worker-only.yml
+# and set TEMPORAL_ADDRESS to your Temporal frontend, e.g. 192.168.1.20:7233.
+# The worker only connects out, so Temporal needs no extra ports opened.
+
+name: whataracket
+
+services:
+  worker:
+    build:
+      context: ../..
+      dockerfile: Dockerfile
+      args:
+        INSTALL_CHROMIUM: "${INSTALL_CHROMIUM:-false}"
+    image: whataracket-worker:local
+    environment:
+      TEMPORAL_ADDRESS: "${TEMPORAL_ADDRESS:?set TEMPORAL_ADDRESS to your Temporal frontend, host:7233}"
+      TEMPORAL_NAMESPACE: "${TEMPORAL_NAMESPACE:-default}"
+      TEMPORAL_TASK_QUEUE: "${TEMPORAL_TASK_QUEUE:-whataracket}"
+      TEMPORAL_TLS: "${TEMPORAL_TLS:-false}"
+      TEMPORAL_API_KEY: "${TEMPORAL_API_KEY:-}"
+      CLUBSPARK_HOST: "${CLUBSPARK_HOST:-clubspark.lta.org.uk}"
+      CLUBSPARK_ROLE: "${CLUBSPARK_ROLE:-}"
+      NTFY_TOPIC_URL: "${NTFY_TOPIC_URL:-}"
+      NTFY_TOKEN: "${NTFY_TOKEN:-}"
+    volumes:
+      - requests:/requests
+    restart: unless-stopped
+
+volumes:
+  requests:

@@ -7,17 +7,21 @@
     "node": ">=22.11.0"
   },
   "scripts": {
-    "build": "tsc -b",
+    "build": "tsc -b && node apps/worker/dist/bundle.js",
     "typecheck": "tsc -b --pretty",
     "typecheck:tests": "tsc -p tsconfig.eslint.json",
     "lint": "eslint .",
     "test": "vitest run",
+    "worker": "node --env-file-if-exists=.env apps/worker/dist/main.js",
+    "cli": "node --env-file-if-exists=.env apps/worker/dist/cli.js",
+    "capture": "node --experimental-strip-types tools/capture/capture.ts",
     "temporal:dev": "docker compose -f deploy/compose/temporal-dev.yml up -d"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.0",
     "@types/node": "^22.10.2",
     "eslint": "^9.39.0",
+    "fast-check": "^4.10.2",
     "typescript": "^5.9.3",
     "typescript-eslint": "^8.46.0",
     "vitest": "^3.2.4"

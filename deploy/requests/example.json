@@ -1,0 +1,14 @@
+{
+  "name": "tue-thu-evenings",
+  "venue": "ParliamentHillFieldsTennisCourts",
+  "courts": "any",
+  "days": ["Tue", "Thu"],
+  "window": { "earliestStart": "18:00", "latestEnd": "20:00" },
+  "durationMinutes": 60,
+  "dateRange": { "from": "2026-11-01", "to": "2026-12-20" },
+  "maxPricePence": 1500,
+  "mode": "recurring",
+  "action": "notify",
+  "pollEveryMinutes": 5,
+  "jitterMinutes": 1
+}

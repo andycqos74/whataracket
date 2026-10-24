@@ -1,6 +1,7 @@
 packages:
   - "packages/*"
   - "apps/*"
+  - "tools/*"
 
 # Security floors for transitive dependencies a direct dependency pins below
 # a patched release. Each line names the advisory it closes; remove it once
