@@ -37,3 +37,5 @@ deploy/compose       local Temporal dev server
    history, logs, fixtures or commits.
 4. **Be polite to ClubSpark.** Poll every few minutes with jitter, and never
    try to defeat Cloudflare.
+
+<!-- Push test from local checkout, 2026-10-24. Safe to remove. -->
