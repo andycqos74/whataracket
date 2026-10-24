@@ -1,0 +1,10 @@
+{
+  "files": [],
+  "references": [
+    { "path": "packages/domain" },
+    { "path": "packages/clubspark" },
+    { "path": "packages/activities" },
+    { "path": "packages/workflows" },
+    { "path": "apps/worker" }
+  ]
+}

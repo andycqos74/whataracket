@@ -1,0 +1,11 @@
+{
+  "name": "@whataracket/clubspark",
+  "version": "0.0.0",
+  "private": true,
+  "description": "ClubSpark client: availability over HTTPS, login and checkout via Playwright.",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": { ".": { "types": "./dist/index.d.ts", "default": "./dist/index.js" } },
+  "dependencies": { "@whataracket/domain": "workspace:*", "playwright": "^1.56.0" }
+}

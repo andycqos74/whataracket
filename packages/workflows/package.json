@@ -1,0 +1,22 @@
+{
+  "name": "@whataracket/workflows",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Temporal workflows: one long-running workflow per booking request.",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "dependencies": {
+    "@temporalio/workflow": "^1.23.0",
+    "@whataracket/domain": "workspace:*"
+  },
+  "devDependencies": {
+    "@whataracket/activities": "workspace:*"
+  }
+}

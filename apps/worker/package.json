@@ -1,0 +1,19 @@
+{
+  "name": "@whataracket/worker",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Temporal worker process. Must run on a residential connection — ClubSpark blocks datacenter IPs.",
+  "type": "module",
+  "dependencies": {
+    "@temporalio/client": "^1.23.0",
+    "@temporalio/worker": "^1.23.0",
+    "@whataracket/activities": "workspace:*",
+    "@whataracket/workflows": "workspace:*"
+  },
+  "scripts": {
+    "start": "node dist/main.js"
+  },
+  "devDependencies": {
+    "@temporalio/testing": "^1.23.0"
+  }
+}

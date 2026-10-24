@@ -1,0 +1,25 @@
+{
+  "name": "whataracket",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@10.33.0",
+  "engines": {
+    "node": ">=22.11.0"
+  },
+  "scripts": {
+    "build": "tsc -b",
+    "typecheck": "tsc -b --pretty",
+    "typecheck:tests": "tsc -p tsconfig.eslint.json",
+    "lint": "eslint .",
+    "test": "vitest run",
+    "temporal:dev": "docker compose -f deploy/compose/temporal-dev.yml up -d"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.39.0",
+    "@types/node": "^22.10.2",
+    "eslint": "^9.39.0",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.46.0",
+    "vitest": "^3.2.4"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "name": "@whataracket/activities",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Temporal activities: wrap the ClubSpark client and notifications.",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": { ".": { "types": "./dist/index.d.ts", "default": "./dist/index.js" } },
+  "dependencies": { "@temporalio/activity": "^1.23.0", "@whataracket/clubspark": "workspace:*", "@whataracket/domain": "workspace:*" }
+}

@@ -1,0 +1,17 @@
+node_modules/
+dist/
+*.tsbuildinfo
+coverage/
+
+# Secrets — never committed. See docs/SETUP.md.
+.env
+.env.*
+!.env.example
+*.env
+
+# Playwright output and capture files. Captures can hold session cookies and
+# personal details even after redaction — keep them local.
+test-results/
+playwright-report/
+captures/
+.auth/

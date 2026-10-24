@@ -1,0 +1,45 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+# Least privilege: the workflow reads code and nothing else.
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+
+      - name: Typecheck
+        run: pnpm typecheck
+
+      # The per-package builds exclude test files, and vitest strips types
+      # without checking them — so without this, tests drift from the code.
+      - name: Typecheck tests
+        run: pnpm typecheck:tests
+
+      # Includes the workflow determinism rules. A failure here means
+      # non-deterministic code reached a workflow — a defect, not a lint nit.
+      - name: Lint
+        run: pnpm lint
+
+      # CI never talks to ClubSpark: tests run against recorded fixtures and the
+      # simulated adapter. GitHub's runners are datacenter IPs and would be
+      # blocked anyway.
+      - name: Tests
+        run: pnpm test

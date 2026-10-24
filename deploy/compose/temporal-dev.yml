@@ -1,0 +1,14 @@
+# Local development only: a single-process Temporal dev server with the Web UI.
+# Production uses your existing self-hosted Temporal — see docs/SETUP.md.
+services:
+  temporal:
+    image: temporalio/temporal:1.8.3
+    command: ["server", "start-dev", "--ip", "0.0.0.0", "--db-filename", "/data/temporal.db"]
+    ports:
+      - "7233:7233"   # gRPC — workers and clients
+      - "8233:8233"   # Web UI
+    volumes:
+      - temporal-data:/data
+
+volumes:
+  temporal-data:

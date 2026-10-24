@@ -1,0 +1,11 @@
+{
+  "name": "@whataracket/domain",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Pure booking rules: request parameters, slot matching, release windows. Imported by workflow code, so no I/O, clock or randomness.",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": { ".": { "types": "./dist/index.d.ts", "default": "./dist/index.js" } },
+  "dependencies": {}
+}
